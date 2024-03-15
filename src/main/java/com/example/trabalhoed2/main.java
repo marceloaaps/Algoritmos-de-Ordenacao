@@ -9,24 +9,24 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class main extends Application {
+public class main{
     public static void main(String[] args) throws IOException {
-        launch(args);
-    }
 
+        launch(args);
+
+//        FileProperties fp = new FileProperties();
+//        fp.fileWriter();
+    }
     @Override
     public void start(Stage stage) throws IOException {
 
-        //Na hora que for fazer o arquivo, comentar o codigo de leitura, e na hora de fazer a leitura, comentar o codigo de escrita.
-        //Se não seguir esses passos, vai dar erro pq o arquivo vai se reescrever com bugs e não achará nada.
-        //Caminho para o arquivo em disco
-//
-//        String path = "E:\\Workspaces\\ws-java\\AulasFaculdade\\texto.txt";
-//        String path2 = "E:\\Workspaces\\ws-java\\AulasFaculdade\\texto.txt";
-//        BufferedWriter bw = new BufferedWriter(new FileWriter(path));
-//        BufferedReader br = new BufferedReader(new FileReader(path2));
+        FileProperties fp = new FileProperties();
+        fp.fileReader();
+        ArrayList<Integer> list = fp.getList();
+        long time5f = fp.getTime();
 
         int[] arrayLarge = new int[100], arrayLarger = new int[1000], arrayLargest = new int[10000];
         int max = 1000, min = 1;
@@ -35,41 +35,7 @@ public class main extends Application {
         Arrays.fill(arrayLarge, 0);
         Arrays.fill(arrayLarger, 0);
         Arrays.fill(arrayLargest, 0);
-
-//
-//        //Escreve os arquivos em disco com um valor randomico de 1 a 1000
-//        for (int i = 0; i < 1000; i++) {
-//            int temp = (int) (Math.random() * range + min);
-//            String tempo = String.valueOf(temp);
-//            bw.write(tempo);
-//            bw.newLine();
-//        }
-//        bw.close();
-//        //Fazendo a leitura dos arquivos em disco
-//        String line;
-//        ArrayList<Integer> list = new ArrayList<>();
-//
-//        while ((line = br.readLine()) != null) {
-//            list.add(Integer.valueOf(line));
-//        }
-//
-//        for (int i = list.size() - 1; i > 0; i--) {
-//            boolean swapped = false;
-//            for (int j = 0; j < i; j++) {
-//                if (list.get(j) > list.get(j + 1)) {
-//                    int temp = list.get(j);
-//                    list.set(j, list.get(j + 1));
-//                    list.set(j + 1, temp);
-//                    swapped = true;
-//                }
-//            }
-//            if (!swapped) {
-//                break;
-//            }
-//        }
-//        br.close();
-//
-//        System.out.println("Arquivo em disco: " + list);
+        ArrayList<Integer> list1 = new ArrayList<>();
 
         for (int i = 0; i < 10000; i++) {
             if (arrayLarge[99] == 0) {
@@ -81,9 +47,12 @@ public class main extends Application {
             if (arrayLargest[9999] == 0) {
                 arrayLargest[i] = (int) (Math.random() * range) + min;
             }
+            int temp = (int) (Math.random() * range) + min;
+            list1.add(temp);
         }
 
-        // Bubble sort, varre o array e ordena em ordem crescente
+        long time1f = 0, time2f = 0, time3f = 0, time4f = 0;
+
         for (int i = arrayLargest.length - 1; i > 0; i--) {
             boolean swap = false;
 
@@ -95,7 +64,7 @@ public class main extends Application {
                     arrayLarge[j + 1] = temp;
                 }
             }
-            long time1f = System.nanoTime() - time1;
+            time1f = System.nanoTime() - time1;
 
             long time2 = System.nanoTime();
             for (int j = 0; j < arrayLarger.length - 1; j++) {
@@ -105,7 +74,7 @@ public class main extends Application {
                     arrayLarger[j + 1] = temp;
                 }
             }
-            long time2f = System.nanoTime() - time2;
+            time2f = System.nanoTime() - time2;
 
             long time3 = System.nanoTime();
             for (int j = 0; j < arrayLargest.length - 1; j++) {
@@ -116,46 +85,56 @@ public class main extends Application {
                     swap = true;
                 }
             }
-            long time3f = System.nanoTime() - time3;
+            time3f = System.nanoTime() - time3;
+
+            long time4 = System.nanoTime();
+            for (int j = 0; j < list1.size() - 1; j++) {
+                if (list1.get(j) > list1.get(j + 1)) {
+                    int temp = list1.get(j);
+                    list1.set(j, list1.get(j + 1));
+                    list1.set(j + 1, temp);
+                    swap = true;
+                }
+            }
+            time4f = System.nanoTime() - time4;
 
             if (!swap) {
                 System.out.println("Processamento finalizado!");
                 System.out.println("--------------------------------------------");
-                System.out.println("Array de 100: " + Arrays.toString(arrayLarge));
-                System.out.println("Tempo de processamento: " + (time1f));
+                System.out.println("Array de 100: " + Arrays.toString(arrayLarge) + "\nTempo de processamento: " + (time1f));
                 System.out.println(" ");
                 System.out.println("--------------------------------------------");
-                System.out.println("Array de 1000: " + Arrays.toString(arrayLarger));
-                System.out.println("Tempo de processamento: " + (time2f));
+                System.out.println("Array de 1000: " + Arrays.toString(arrayLarger) + "\n Tempo de processamento: " + (time2f));
                 System.out.println(" ");
                 System.out.println("--------------------------------------------");
-                System.out.println("Array de 10000: " + Arrays.toString(arrayLargest));
-                System.out.println("Tempo de processamento: " + (time3f));
+                System.out.println("Array de 10000: " + Arrays.toString(arrayLargest) + "\nTempo de processamento: " + (time3f));
+                System.out.println("--------------------------------------------");
+                System.out.println("Lista de 10000: " + Arrays.toString(list1.toArray()) + "\nTempo de processamento: " + (time4f));
+                System.out.println(" ");
+                System.out.println("--------------------------------------------");
+                System.out.println("Arquivo em Disco de 10000: " + Arrays.toString(list.toArray()) + "\nTempo de processamento: " + (time5f));
                 break;
             }
-
-            // Cria os eixos
-            CategoryAxis xAxis = new CategoryAxis();
-            xAxis.setLabel("Tamanho do Array");
-            NumberAxis yAxis = new NumberAxis();
-            yAxis.setLabel("Tempo de Processamento (Nanosegundos)");
-
-            // Cria a série de dados
-            XYChart.Series series1 = new XYChart.Series();
-            series1.setName("Tempos de Processamento");
-            series1.getData().add(new XYChart.Data("100", time1f));
-            series1.getData().add(new XYChart.Data("1000", time2f));
-            series1.getData().add(new XYChart.Data("10000", time3f));
-
-            // Cria o gráfico
-            LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
-            lineChart.getData().add(series1);
-
-            // Mostra o gráfico
-            Scene scene = new Scene(lineChart, 500, 300);
-            stage.setScene(scene);
-            stage.show();
-
         }
+
+        CategoryAxis xAxis = new CategoryAxis();
+        xAxis.setLabel("Tamanho do Array");
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Tempo de Processamento (Nanosegundos)");
+
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+        series1.setName("Tempos de Processamento");
+        series1.getData().add(new XYChart.Data("Array 100", time1f));
+        series1.getData().add(new XYChart.Data("Array 1000", time2f));
+        series1.getData().add(new XYChart.Data("Array 10000", time3f));
+        series1.getData().add(new XYChart.Data("Lista", time4f));
+        series1.getData().add(new XYChart.Data("Arquivo em Disco", time5f));
+
+        LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.getData().add(series1);
+
+        Scene scene = new Scene(lineChart, 500, 300);
+        stage.setScene(scene);
+        stage.show();
     }
 }
