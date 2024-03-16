@@ -27,7 +27,7 @@ public class Bubble {
     }
 
 
-    public void bubbleReader(String path) throws IOException {
+    public void bubbleSort(String path) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(path));
 
