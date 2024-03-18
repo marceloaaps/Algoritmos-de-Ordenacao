@@ -22,15 +22,15 @@ public class Insertion {
     }
 
     public void insertionSort() {
-        for (int i = 0; i < list.size() + 1; i++) {
+        for (int i = 1; i < list.size(); i++) { // Percorre o array
 
             int value = list.get(i);
-
-            while (value > 0 && value > list.get(i - 1)) {
-                value = list.get(i-1);
-                list.set(i-1, value);
-                list.set(i, value);
+            int j = i-1;
+            while (j >= 0 &&  list.get(j) > value ){ // Enquanto value for maior que o valor depois, ele percorre.
+                list.set(j + 1, list.get(j));
+                j = j-1;
             }
+            list.set(j + 1, value);
         }
     }
 }
