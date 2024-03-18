@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main extends Application {
 
@@ -35,15 +34,15 @@ public class Main extends Application {
         ArrayList<Integer> listCresc;
         ArrayList<Integer> listDec;
 
-        bub.bubbleReader(path);
+        bub.bubbleSort(path);
         listCresc = bub.getList();
         long timeCresc = bub.getTime();
 
-        bub.bubbleReader(path2);
+        bub.bubbleSort(path2);
         listDec = bub.getList();
         long timeDec = bub.getTime();
 
-        bub.bubbleReader(path3);
+        bub.bubbleSort(path3);
         listDec = bub.getList();
         long timeRandom = bub.getTime();
 

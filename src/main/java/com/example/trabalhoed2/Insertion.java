@@ -21,12 +21,16 @@ public class Insertion {
         this.time = time;
     }
 
-    public void insertionReader() {
+    public void insertionSort() {
+        for (int i = 1; i < list.size(); i++) { // Percorre o array
 
-        for (int i = list.size(); i < list.size() + 1; i++) {
-
-
-
+            int value = list.get(i);
+            int j = i-1;
+            while (j >= 0 &&  list.get(j) > value ){ // Enquanto value for maior que o valor depois, ele percorre.
+                list.set(j + 1, list.get(j));
+                j = j-1;
+            }
+            list.set(j + 1, value);
         }
     }
 }
