@@ -74,7 +74,7 @@ public class Main extends Application {
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Tamanho do Array");
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Tempo de Processamento (Nanosegundos)");
+        yAxis.setLabel("Tempo de Processamento (Nano9)");
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Tempos de Processamento");
         series1.getData().add(new XYChart.Data("Bubble Crescente", timeCresc));
