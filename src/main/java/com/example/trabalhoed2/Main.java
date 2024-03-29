@@ -34,42 +34,39 @@ public class Main extends Application {
 
         ArrayList<Integer> listCresc, listDec, listDeo, listCrescIns, listDecIns, listDeoIns;
         ArrayList<ArrayList<Integer>> bubbleList = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> insertList = new ArrayList<>();
 
         bub.bubbleSort(path);
         listCresc = bub.getList();
         bubbleList.add(listCresc);
-        long timeCresc = bub.getTime();
+        long timeCrescBub = bub.getTime();
 
         bub.bubbleSort(path2);
         listDec = bub.getList();
         bubbleList.add(listDec);
-        long timeDec = bub.getTime();
+        long timeDecBub = bub.getTime();
 
         bub.bubbleSort(path3);
         listDeo = bub.getList();
         bubbleList.add(listDeo);
-        long timeRandom = bub.getTime();
+        long timeDeoBub = bub.getTime();
 
         //------------------------//
 
-        long timeCrescIns = 0;
-        long timeDecIns = 0;
-        long timeDeoIns = 0;
+        ins.insertionSort(path);
+        listCrescIns = ins.getList();
+        insertList.add(listCresc);
+        long timeCrescIns = ins.getTime();
 
-        for (int i = 0; i<=10; i++){
-            ins.insertionSort(path);
-            timeCrescIns = ins.getTime();
+        ins.insertionSort(path2);
+        listDecIns = ins.getList();
+        insertList.add(listDecIns);
+        long timeDecIns = ins.getTime();
 
-            ins.insertionSort(path2);
-            timeDecIns = ins.getTime();
-
-            ins.insertionSort(path3);
-            timeDeoIns += ins.getTime();
-        }
-
-        long timeTotal = timeCrescIns / 10;
-        long timeTotal2 = timeDecIns / 10;
-        long timeTotal3 = timeDeoIns / 10;
+        ins.insertionSort(path3);
+        listDeoIns = ins.getList();
+        insertList.add(listDeoIns);
+        long timeDeoIns = ins.getTime();
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Tamanho do Array");
@@ -77,16 +74,12 @@ public class Main extends Application {
         yAxis.setLabel("Tempo de Processamento (Nano9)");
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Tempos de Processamento");
-        series1.getData().add(new XYChart.Data("Bubble Crescente", timeCresc));
-        series1.getData().add(new XYChart.Data("Bubble Decrescente", timeDec));
-        series1.getData().add(new XYChart.Data("Bubble Randomico", timeRandom));
-        series1.getData().add(new XYChart.Data("Insert Crescente", timeTotal));
-        series1.getData().add(new XYChart.Data("Insert Decrescente", timeTotal2));
-        series1.getData().add(new XYChart.Data("Insert Randomico", timeTotal3));
-
-        System.out.println(timeTotal);
-        System.out.println(timeTotal2);
-        System.out.println(timeTotal3);
+        series1.getData().add(new XYChart.Data("Bubble Crescente", timeCrescBub));
+        series1.getData().add(new XYChart.Data("Bubble Decrescente", timeDecBub));
+        series1.getData().add(new XYChart.Data("Bubble Randomico", timeDeoBub));
+        series1.getData().add(new XYChart.Data("Insert Crescente", timeCrescIns));
+        series1.getData().add(new XYChart.Data("Insert Decrescente", timeDecIns));
+        series1.getData().add(new XYChart.Data("Insert Randomico", timeDeoIns));
 
         LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.getData().add(series1);
