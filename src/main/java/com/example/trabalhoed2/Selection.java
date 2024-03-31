@@ -55,6 +55,7 @@ public class Selection {
             for (int j = i + 1; j < list.size(); j++) {
                 if (list.get(j) < list.get(n)) {
                     n = j;
+                    this.count++;
                 }
             }
 

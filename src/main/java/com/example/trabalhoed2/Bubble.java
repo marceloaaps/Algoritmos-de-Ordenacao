@@ -8,11 +8,16 @@ import java.util.ArrayList;
 public class Bubble {
 
     protected ArrayList<Integer> list = new ArrayList<>();
+    private long time;
+    private int count;
 
     public Bubble() {
     }
 
-    private long time;
+    public Bubble(ArrayList<Integer> list, long time) {
+        this.list = list;
+        this.time = time;
+    }
 
     public long getTime() {
         return time;
@@ -26,6 +31,13 @@ public class Bubble {
         return list;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public void bubbleSort(String path) throws IOException {
 
@@ -45,6 +57,7 @@ public class Bubble {
                     int temp = list.get(j);
                     this.list.set(j, list.get(j + 1));
                     this.list.set(j + 1, temp);
+                    this.count++;
                     swapped = true;
                 }
             }

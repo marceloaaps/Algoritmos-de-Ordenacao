@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Insertion {
     private ArrayList<Integer> list = new ArrayList<>();
     private long time;
+    private int count;
 
     public Insertion() {
     }
@@ -25,6 +26,14 @@ public class Insertion {
         this.time = time;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public void insertionSort(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
@@ -37,10 +46,11 @@ public class Insertion {
         for (int i = 1; i < list.size(); i++) {
 
             int value = list.get(i);
-            int j = i-1;
-            while (j >= 0 &&  list.get(j) > value ){
+            int j = i - 1;
+            while (j >= 0 && list.get(j) > value) {
                 this.list.set(j + 1, list.get(j));
-                j = j-1;
+                j = j - 1;
+                this.count++;
             }
             this.list.set(j + 1, value);
         }
