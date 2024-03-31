@@ -3,10 +3,10 @@ package com.example.trabalhoed2;
 import java.io.*;
 import java.util.ArrayList;
 
-public class FileProperties {
+public class FileProperties{
 
 
-    protected ArrayList<Integer> list = new ArrayList<>();
+    private ArrayList<Integer> list = new ArrayList<>();
     private long time;
 
     public long getTime() {

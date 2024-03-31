@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Bubble {
 
-    protected ArrayList<Integer> list = new ArrayList<>();
+    private ArrayList<Integer> list = new ArrayList<>();
     private long time;
     private int count;
 
