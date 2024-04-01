@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-    static String path = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto1.txt";
-    static String path2 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto2.txt";
-    static String path3 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto3.txt";
+    static String path = "C:\\Users\\Marcelo\\Desktop\\texto1.txt";
+    static String path2 = "C:\\Users\\Marcelo\\Desktop\\texto2.txt";
+    static String path3 = "C:\\Users\\Marcelo\\Desktop\\texto3.txt";
 
     public static void main(String[] args) throws IOException {
 
@@ -106,25 +106,43 @@ public class Main extends Application {
         lineChart.setTitle("Métodos de Ordenação");
 
         XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Bubble");
-        series1.getData().add(new XYChart.Data("0", timeCrescBub));
-        series1.getData().add(new XYChart.Data("10", timeDecBub));
-        series1.getData().add(new XYChart.Data("100", timeDeoBub));
+        series1.setName("BubbleCresc");
+        series1.getData().add(new XYChart.Data("10000", timeCrescBub));
 
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Insertion");
-        series2.getData().add(new XYChart.Data("0", timeCrescIns));
-        series2.getData().add(new XYChart.Data("10", timeDecIns));
-        series2.getData().add(new XYChart.Data("100", timeDeoIns));
+        series2.setName("BubbleDec");
+        series2.getData().add(new XYChart.Data("10000", timeDecBub));
 
         XYChart.Series series3 = new XYChart.Series();
-        series3.setName("Selection");
-        series3.getData().add(new XYChart.Data("0", timeDecSel));
-        series3.getData().add(new XYChart.Data("10", timeDecSel));
-        series3.getData().add(new XYChart.Data("100", timeDecSel));
+        series3.setName("BubbleDeo");
+        series3.getData().add(new XYChart.Data("10000", timeDeoBub));
+
+        XYChart.Series series4 = new XYChart.Series();
+        series4.setName("InsertionCresc");
+        series4.getData().add(new XYChart.Data("10000", timeCrescIns));
+
+        XYChart.Series series5 = new XYChart.Series();
+        series5.setName("InsertionDec");
+        series5.getData().add(new XYChart.Data("10000", timeDecIns));
+
+        XYChart.Series series6 = new XYChart.Series();
+        series6.setName("InsertionDec");
+        series6.getData().add(new XYChart.Data("10000", timeDeoIns));
+
+        XYChart.Series series7 = new XYChart.Series();
+        series7.setName("SelectionCresc");
+        series7.getData().add(new XYChart.Data("100", timeCrescSel));
+
+        XYChart.Series series8 = new XYChart.Series();
+        series8.setName("SelectionDec");
+        series8.getData().add(new XYChart.Data("1000", timeDecSel));
+
+        XYChart.Series series9 = new XYChart.Series();
+        series9.setName("SelectionDeo");
+        series9.getData().add(new XYChart.Data("10000", timeDeoSel));
 
         Scene scene = new Scene(lineChart, 800, 600);
-        lineChart.getData().addAll(series1, series2, series3);
+        lineChart.getData().addAll(series1, series2, series3, series4, series5, series6, series7, series8, series9);
 
         stage.setScene(scene);
         stage.show();
