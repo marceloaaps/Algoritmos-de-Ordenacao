@@ -1,21 +1,11 @@
-package com.example.trabalhoed2;
+package com.entities;
 
 import java.io.*;
 import java.util.ArrayList;
 
 public class FileProperties{
 
-
     private ArrayList<Integer> list = new ArrayList<>();
-    private long time;
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     public ArrayList<Integer> getList() {
         return list;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ui.Controller">
+    <children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@style.css">
+            <children>
+                <AnchorPane fx:id="sideBar" prefHeight="35.0" prefWidth="600.0" styleClass="topBar" stylesheets="@style.css">
+                    <children>
+                        <Button layoutX="548.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeProgram" prefHeight="25.0" prefWidth="0.0" styleClass="closeButton" stylesheets="@style.css" text="X" textFill="WHITE" />
+                    </children></AnchorPane>
+                <LineChart fx:id="lineChart" createSymbols="false" layoutX="14.0" layoutY="66.0" prefHeight="334.0" prefWidth="525.0" stylesheets="@style.css">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </LineChart>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

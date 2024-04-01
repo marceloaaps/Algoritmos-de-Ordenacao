@@ -1,12 +1,18 @@
-package com.example.trabalhoed2;
+package com.program;
 
+import com.entities.Bubble;
+import com.entities.Insertion;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,19 +22,13 @@ public class Main extends Application {
     static String path = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto1.txt";
     static String path2 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto2.txt";
     static String path3 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\texto3.txt";
+
     public static void main(String[] args) throws IOException {
 
 //        FileProperties fp = new FileProperties();
 //        fp.fileWriterCresc(path, 10000);
 //        fp.fileWriterDec(path2, 10000);
 //        fp.fileWriterDeo(path3, 10000);
-
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws IOException {
-
         Bubble bub = new Bubble();
         Insertion ins = new Insertion();
 
@@ -68,24 +68,24 @@ public class Main extends Application {
         insertList.add(listDeoIns);
         long timeDeoIns = ins.getTime();
 
-        CategoryAxis xAxis = new CategoryAxis();
-        xAxis.setLabel("Tamanho do Array");
-        NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Tempo de Processamento (Nano9)");
-        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("Tempos de Processamento");
-        series1.getData().add(new XYChart.Data("Bubble Crescente", timeCrescBub));
-        series1.getData().add(new XYChart.Data("Bubble Decrescente", timeDecBub));
-        series1.getData().add(new XYChart.Data("Bubble Randomico", timeDeoBub));
-        series1.getData().add(new XYChart.Data("Insert Crescente", timeCrescIns));
-        series1.getData().add(new XYChart.Data("Insert Decrescente", timeDecIns));
-        series1.getData().add(new XYChart.Data("Insert Randomico", timeDeoIns));
-
-        LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.getData().add(series1);
-
-        Scene scene = new Scene(lineChart, 500, 300);
-        stage.setScene(scene);
-        stage.show();
+        launch(args);
     }
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Parent root = loader.load();
+        ModuleLayer.Controller controller = loader.getController();
+        Scene scene = new Scene(root);
+
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+        primaryStage.setScene(scene);
+
+        controller.setStage(primaryStage);
+        primaryStage.show();
+    }
+
 }

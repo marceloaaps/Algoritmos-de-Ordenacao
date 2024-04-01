@@ -1,4 +1,4 @@
-package com.example.trabalhoed2;
+package com.entities;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
