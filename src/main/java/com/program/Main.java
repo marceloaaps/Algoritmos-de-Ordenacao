@@ -2,6 +2,7 @@ package com.program;
 
 import com.entities.Bubble;
 import com.entities.Insertion;
+import com.entities.Selection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,12 +30,22 @@ public class Main extends Application {
 //        fp.fileWriterCresc(path, 10000);
 //        fp.fileWriterDec(path2, 10000);
 //        fp.fileWriterDeo(path3, 10000);
+
+        launch(args);
+    }
+
+
+    @Override
+    public void start(Stage stage) throws IOException {
+
         Bubble bub = new Bubble();
         Insertion ins = new Insertion();
+        Selection sel = new Selection();
 
-        ArrayList<Integer> listCresc, listDec, listDeo, listCrescIns, listDecIns, listDeoIns;
+        ArrayList<Integer> listCresc, listDec, listDeo, listCrescIns, listDecIns, listDeoIns, listDecSel, listCrescDel, listDeoSel;
         ArrayList<ArrayList<Integer>> bubbleList = new ArrayList<>();
         ArrayList<ArrayList<Integer>> insertList = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> selectionList = new ArrayList<>();
 
         bub.bubbleSort(path);
         listCresc = bub.getList();
@@ -68,24 +79,54 @@ public class Main extends Application {
         insertList.add(listDeoIns);
         long timeDeoIns = ins.getTime();
 
-        launch(args);
+        //------------------------//
+
+        sel.selectionSort(path);
+        listCrescDel = sel.getList();
+        selectionList.add(listCrescDel);
+        long timeCrescSel = sel.getTime();
+
+        sel.selectionSort(path);
+        listDecSel = sel.getList();
+        selectionList.add(listDecSel);
+        long timeDecSel = sel.getTime();
+
+        sel.selectionSort(path);
+        listDeoSel = sel.getList();
+        selectionList.add(listDeoSel);
+        long timeDeoSel = sel.getTime();
+
+        stage.setTitle("Line Chart Sample");
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Quantidade de valores ordenados");
+        yAxis.setLabel("Tempo de Processamento (ms)");
+        final LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
+
+        lineChart.setTitle("Métodos de Ordenação");
+
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Bubble");
+        series1.getData().add(new XYChart.Data("0", timeCrescBub));
+        series1.getData().add(new XYChart.Data("10", timeDecBub));
+        series1.getData().add(new XYChart.Data("100", timeDeoBub));
+
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Insertion");
+        series2.getData().add(new XYChart.Data("0", timeCrescIns));
+        series2.getData().add(new XYChart.Data("10", timeDecIns));
+        series2.getData().add(new XYChart.Data("100", timeDeoIns));
+
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("Selection");
+        series3.getData().add(new XYChart.Data("0", timeDecSel));
+        series3.getData().add(new XYChart.Data("10", timeDecSel));
+        series3.getData().add(new XYChart.Data("100", timeDecSel));
+
+        Scene scene = new Scene(lineChart, 800, 600);
+        lineChart.getData().addAll(series1, series2, series3);
+
+        stage.setScene(scene);
+        stage.show();
     }
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
-        Parent root = loader.load();
-        ModuleLayer.Controller controller = loader.getController();
-        Scene scene = new Scene(root);
-
-        scene.setFill(Color.TRANSPARENT);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-
-        primaryStage.setScene(scene);
-
-        controller.setStage(primaryStage);
-        primaryStage.show();
-    }
-
 }
