@@ -9,6 +9,5 @@ module com.example.trabalhoed2 {
     opens com.program to javafx.fxml;
     exports com.test;
     opens com.test to javafx.fxml;
-    exports com.ui;
-    opens com.ui to javafx.fxml;
+
 }
