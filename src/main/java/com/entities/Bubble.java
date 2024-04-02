@@ -9,14 +9,17 @@ public class Bubble {
 
     private ArrayList<Integer> list = new ArrayList<>();
     private long time;
-    private int count;
+    private int swaps;
+    private int comparisons;
 
     public Bubble() {
     }
 
-    public Bubble(ArrayList<Integer> list, long time) {
+    public Bubble(ArrayList<Integer> list, long time, int swaps, int comparisons) {
         this.list = list;
         this.time = time;
+        this.swaps = swaps;
+        this.comparisons = comparisons;
     }
 
     public long getTime() {
@@ -31,12 +34,20 @@ public class Bubble {
         return list;
     }
 
-    public int getCount() {
-        return count;
+    public int getSwaps() {
+        return swaps;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setSwaps(int count) {
+        this.swaps = count;
+    }
+
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    public void setComparisons(int comparisons) {
+        this.comparisons = comparisons;
     }
 
     public void bubbleSort(String path) throws IOException {
@@ -53,12 +64,13 @@ public class Bubble {
         for (int i = list.size() - 1; i > 0; i--) {
             boolean swapped = false;
             for (int j = 0; j < i; j++) {
+                comparisons++;
                 if (list.get(j) > list.get(j + 1)) {
                     int temp = list.get(j);
                     this.list.set(j, list.get(j + 1));
                     this.list.set(j + 1, temp);
-                    this.count = count+1;
                     swapped = true;
+                    swaps++;
                 }
             }
             if (!swapped) {

@@ -63,7 +63,7 @@ public class Main extends Application {
                 sel.selectionSort(path);
 
                 bubbleTimes.add(bub.getTime());
-                bubbleCount.add(bub.getCount());
+                bubbleCount.add(bub.getSwaps());
                 insertionTimes.add(ins.getTime());
                 insertionCount.add(ins.getCount());
                 selectionTimes.add(sel.getTime());

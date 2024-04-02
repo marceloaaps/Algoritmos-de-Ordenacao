@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Insertion {
     private ArrayList<Integer> list = new ArrayList<>();
     private long time;
-    private int count;
+    private int swaps;
 
     public Insertion() {
     }
@@ -27,11 +27,11 @@ public class Insertion {
     }
 
     public int getCount() {
-        return count;
+        return swaps;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setCount(int swaps) {
+        this.swaps = swaps;
     }
 
     public void insertionSort(String path) throws IOException {
@@ -50,7 +50,7 @@ public class Insertion {
             while (j >= 0 && list.get(j) > value) {
                 this.list.set(j + 1, list.get(j));
                 j = j - 1;
-                this.count++;
+                this.swaps++;
             }
             this.list.set(j + 1, value);
         }

@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class Selection {
     private ArrayList<Integer> list = new ArrayList<>();
     private Long time;
-    private int count;
+    private int swaps;
 
     public Selection() {
     }
 
-    public Selection(ArrayList<Integer> list, Long time, int count) {
+    public Selection(ArrayList<Integer> list, Long time, int swaps) {
         this.list = list;
         this.time = time;
-        this.count = count;
+        this.swaps = swaps;
     }
 
     public ArrayList<Integer> getList() {
@@ -33,11 +33,11 @@ public class Selection {
     }
 
     public int getCount() {
-        return count;
+        return swaps;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setCount(int swaps) {
+        this.swaps = swaps;
     }
 
     public void selectionSort(String path) throws IOException {
@@ -55,7 +55,7 @@ public class Selection {
             for (int j = i + 1; j < list.size(); j++) {
                 if (list.get(j) < list.get(n)) {
                     n = j;
-                    this.count++;
+                    this.swaps++;
                 }
             }
 
