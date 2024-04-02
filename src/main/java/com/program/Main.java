@@ -97,54 +97,40 @@ public class Main extends Application {
         long timeDeoSel = sel.getTime();
 
         stage.setTitle("Line Chart Sample");
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
+        NumberAxis xAxis = new NumberAxis();
+        CategoryAxis yAxis = new CategoryAxis();
         xAxis.setLabel("Quantidade de valores ordenados");
         yAxis.setLabel("Tempo de Processamento (ms)");
-        final LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
+        final LineChart<String, Number> lineChart = new LineChart<String, Number>(yAxis, xAxis);
 
         lineChart.setTitle("Métodos de Ordenação");
 
         XYChart.Series series1 = new XYChart.Series();
-        series1.setName("BubbleCresc");
-        series1.getData().add(new XYChart.Data("10000", timeCrescBub));
+        series1.setName("Bubble");
+        series1.getData().add(new XYChart.Data("100", timeCrescBub));
+        series1.getData().add(new XYChart.Data("1000", timeDecBub));
+        series1.getData().add(new XYChart.Data("10000", timeDeoBub));
 
         XYChart.Series series2 = new XYChart.Series();
-        series2.setName("BubbleDec");
-        series2.getData().add(new XYChart.Data("10000", timeDecBub));
+        series2.setName("Insertion");
+        series2.getData().add(new XYChart.Data("100", timeCrescIns));
+        series2.getData().add(new XYChart.Data("1000", timeDecIns));
+        series2.getData().add(new XYChart.Data("10000", timeDeoIns));
 
         XYChart.Series series3 = new XYChart.Series();
-        series3.setName("BubbleDeo");
-        series3.getData().add(new XYChart.Data("10000", timeDeoBub));
-
-        XYChart.Series series4 = new XYChart.Series();
-        series4.setName("InsertionCresc");
-        series4.getData().add(new XYChart.Data("10000", timeCrescIns));
-
-        XYChart.Series series5 = new XYChart.Series();
-        series5.setName("InsertionDec");
-        series5.getData().add(new XYChart.Data("10000", timeDecIns));
-
-        XYChart.Series series6 = new XYChart.Series();
-        series6.setName("InsertionDec");
-        series6.getData().add(new XYChart.Data("10000", timeDeoIns));
-
-        XYChart.Series series7 = new XYChart.Series();
-        series7.setName("SelectionCresc");
-        series7.getData().add(new XYChart.Data("100", timeCrescSel));
-
-        XYChart.Series series8 = new XYChart.Series();
-        series8.setName("SelectionDec");
-        series8.getData().add(new XYChart.Data("1000", timeDecSel));
-
-        XYChart.Series series9 = new XYChart.Series();
-        series9.setName("SelectionDeo");
-        series9.getData().add(new XYChart.Data("10000", timeDeoSel));
+        series3.setName("Selection");
+        series3.getData().add(new XYChart.Data("100", timeCrescSel));
+        series3.getData().add(new XYChart.Data("1000", timeDecSel));
+        series3.getData().add(new XYChart.Data("10000", timeDeoSel));
 
         Scene scene = new Scene(lineChart, 800, 600);
-        lineChart.getData().addAll(series1, series2, series3, series4, series5, series6, series7, series8, series9);
+        lineChart.getData().addAll(series1, series2, series3);
 
         stage.setScene(scene);
         stage.show();
+
+        System.out.println(timeCrescSel);
+        System.out.println(timeDecSel);
+        System.out.println(timeDeoSel);
     }
 }

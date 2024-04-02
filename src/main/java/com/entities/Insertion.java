@@ -42,7 +42,7 @@ public class Insertion {
             this.list.add(Integer.valueOf(line));
         }
 
-        time = System.nanoTime();
+        time = System.currentTimeMillis();
         for (int i = 1; i < list.size(); i++) {
 
             int value = list.get(i);
@@ -55,7 +55,7 @@ public class Insertion {
             this.list.set(j + 1, value);
         }
 
-        time = System.nanoTime() - time;
+        time = System.currentTimeMillis() - time;
         br.close();
     }
 }

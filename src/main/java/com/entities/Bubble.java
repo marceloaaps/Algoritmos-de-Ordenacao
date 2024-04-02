@@ -49,7 +49,7 @@ public class Bubble {
             this.list.add(Integer.valueOf(line));
         }
 
-        time = System.nanoTime();
+        time = System.currentTimeMillis();
         for (int i = list.size() - 1; i > 0; i--) {
             boolean swapped = false;
             for (int j = 0; j < i; j++) {
@@ -65,7 +65,7 @@ public class Bubble {
                 break;
             }
         }
-        time = System.nanoTime() - time;
+        time = System.currentTimeMillis() - time;
         br.close();
     }
 
