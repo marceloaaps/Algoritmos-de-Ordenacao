@@ -57,7 +57,7 @@ public class Bubble {
                     int temp = list.get(j);
                     this.list.set(j, list.get(j + 1));
                     this.list.set(j + 1, temp);
-                    this.count++;
+                    this.count = count+1;
                     swapped = true;
                 }
             }

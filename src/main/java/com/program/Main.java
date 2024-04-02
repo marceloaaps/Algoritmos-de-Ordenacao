@@ -47,6 +47,9 @@ public class Main extends Application {
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Long> insertionTimes = new ArrayList<>();
         ArrayList<Long> selectionTimes = new ArrayList<>();
+        ArrayList<Integer> bubbleCount = new ArrayList<>();
+        ArrayList<Integer> insertionCount = new ArrayList<>();
+        ArrayList<Integer> selectionCount = new ArrayList<>();
 
         for (String path : paths) {
 
@@ -60,8 +63,11 @@ public class Main extends Application {
                 sel.selectionSort(path);
 
                 bubbleTimes.add(bub.getTime());
+                bubbleCount.add(bub.getCount());
                 insertionTimes.add(ins.getTime());
+                insertionCount.add(ins.getCount());
                 selectionTimes.add(sel.getTime());
+                selectionCount.add(sel.getCount());
         }
 
         stage.setTitle("LineChart");
@@ -134,6 +140,9 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
+        System.out.println(bubbleCount.get(3));
+        System.out.println(insertionCount.get(3));
+        System.out.println(selectionCount.get(3));
     }
 
     public static void main(String[] args) throws IOException {
