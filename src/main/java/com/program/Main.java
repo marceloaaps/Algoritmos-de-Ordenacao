@@ -44,21 +44,20 @@ public class Main extends Application {
 
 
         ArrayList<XYChart.Series> seriesList = new ArrayList<>();
-        ArrayList<Integer> totalComparisons = new ArrayList<>();
-        ArrayList<Integer> totalSwaps = new ArrayList<>();
+        ArrayList<Integer> totalBubbleComparisons = new ArrayList<>();
+        ArrayList<Integer> totalBubbleSwaps = new ArrayList<>();
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Integer> bubbleSwap = new ArrayList<>();
         ArrayList<Integer> bubbleComparisons = new ArrayList<>();
         ArrayList<Long> insertionTimes = new ArrayList<>();
         ArrayList<Integer> insertionSwap = new ArrayList<>();
-        ArrayList<Integer> insertComparisons  = new ArrayList<>();
+        ArrayList<Integer> insertionComparisons  = new ArrayList<>();
         ArrayList<Long> selectionTimes = new ArrayList<>();
         ArrayList<Integer> selectionSwap = new ArrayList<>();
         ArrayList<Integer> selectionComparisons = new ArrayList<>();
 
 
         for (String path : paths) {
-
                 Bubble bub = new Bubble();
                 bub.bubbleSort(path);
 
@@ -73,19 +72,46 @@ public class Main extends Application {
                 bubbleComparisons.add(bub.getComparisons());
                 insertionTimes.add(ins.getTime());
                 insertionSwap.add(ins.getSwap());
-                insertComparisons.add(ins.getComparisons());
+                insertionComparisons.add(ins.getComparisons());
                 selectionTimes.add(sel.getTime());
                 selectionSwap.add(sel.getSwap());
                 selectionComparisons.add(sel.getComparisons());
         }
 
         for (int i = 0; i<9; i++){
-                if (i<3){
-                    totalSwaps.set(i, bubbleSwap.get(i));
-                    totalComparisons.set(i, bubbleComparisons.get(i));
-                }
-
+            if (i == 0){
+                System.out.println("Crescente 100");
+            }
+            if (i == 1){
+                System.out.println("Crescente 1000");
+            }
+            if (i == 2){
+                System.out.println("Crescente 10000");
+            }
+            if (i == 3){
+                System.out.println("Decrescente 100");
+            }
+            if (i==4){
+                System.out.println("Decrescente 1000");
+            }
+            if (i==5){
+                System.out.println("Decrescente 10000");
+            }
+            if(i==6){
+                System.out.println("Desordenado 100");
+            }
+            if(i==7){
+                System.out.println("Desordenado 1000");
+            }
+            if(i==8){
+                System.out.println("Desordenado 10000");
+            }
+            System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i));
+            System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i));
+            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Insertion Comparacoes: " + selectionComparisons.get(i));
+            System.out.println();
         }
+
 
         stage.setTitle("LineChart");
         NumberAxis xAxis = new NumberAxis();
