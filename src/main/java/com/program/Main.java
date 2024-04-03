@@ -97,7 +97,7 @@ public class Main extends Application {
             }
             System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i) + " Tempo de Processamento (ms): " + bubbleTimes.get(i));
             System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
-            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Selection Comparacoes: " + selectionComparisons.get(i) + "T empo de Processamento(ms): " + bubbleTimes.get(i));
+            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Selection Comparacoes: " + selectionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
 
             System.out.println();
         }
