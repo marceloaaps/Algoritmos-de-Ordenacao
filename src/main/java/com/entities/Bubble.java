@@ -64,13 +64,13 @@ public class Bubble {
         for (int i = list.size() - 1; i > 0; i--) {
             boolean swapped = false;
             for (int j = 0; j < i; j++) {
-                comparisons++;
+                this.comparisons++;
                 if (list.get(j) > list.get(j + 1)) {
                     int temp = list.get(j);
                     this.list.set(j, list.get(j + 1));
                     this.list.set(j + 1, temp);
                     swapped = true;
-                    swaps++;
+                    this.swaps++;
                 }
             }
             if (!swapped) {

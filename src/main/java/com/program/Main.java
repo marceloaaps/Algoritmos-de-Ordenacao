@@ -47,6 +47,7 @@ public class Main extends Application {
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Long> insertionTimes = new ArrayList<>();
         ArrayList<Long> selectionTimes = new ArrayList<>();
+        ArrayList<Integer> bubbleComparisons = new ArrayList<>();
         ArrayList<Integer> bubbleCount = new ArrayList<>();
         ArrayList<Integer> insertionCount = new ArrayList<>();
         ArrayList<Integer> selectionCount = new ArrayList<>();
@@ -64,6 +65,7 @@ public class Main extends Application {
 
                 bubbleTimes.add(bub.getTime());
                 bubbleCount.add(bub.getSwaps());
+                bubbleComparisons .add(bub.getComparisons());
                 insertionTimes.add(ins.getTime());
                 insertionCount.add(ins.getCount());
                 selectionTimes.add(sel.getTime());
@@ -140,9 +142,9 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        System.out.println(bubbleCount.get(3));
-        System.out.println(insertionCount.get(3));
-        System.out.println(selectionCount.get(3));
+        System.out.println(bubbleCount.get(6));
+        System.out.println(bubbleComparisons.get(6));
+
     }
 
     public static void main(String[] args) throws IOException {
