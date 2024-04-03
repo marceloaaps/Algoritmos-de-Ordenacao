@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-
 
         ArrayList<String> paths = new ArrayList<>();
         ArrayList<List> arrayBubble = new ArrayList<>();
@@ -43,14 +42,20 @@ public class Main extends Application {
         paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado1000.txt");
         paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado10000.txt");
 
+
         ArrayList<XYChart.Series> seriesList = new ArrayList<>();
+        ArrayList<Integer> totalComparisons = new ArrayList<>();
+        ArrayList<Integer> totalSwaps = new ArrayList<>();
         ArrayList<Long> bubbleTimes = new ArrayList<>();
-        ArrayList<Long> insertionTimes = new ArrayList<>();
-        ArrayList<Long> selectionTimes = new ArrayList<>();
+        ArrayList<Integer> bubbleSwap = new ArrayList<>();
         ArrayList<Integer> bubbleComparisons = new ArrayList<>();
-        ArrayList<Integer> bubbleCount = new ArrayList<>();
-        ArrayList<Integer> insertionCount = new ArrayList<>();
-        ArrayList<Integer> selectionCount = new ArrayList<>();
+        ArrayList<Long> insertionTimes = new ArrayList<>();
+        ArrayList<Integer> insertionSwap = new ArrayList<>();
+        ArrayList<Integer> insertComparisons  = new ArrayList<>();
+        ArrayList<Long> selectionTimes = new ArrayList<>();
+        ArrayList<Integer> selectionSwap = new ArrayList<>();
+        ArrayList<Integer> selectionComparisons = new ArrayList<>();
+
 
         for (String path : paths) {
 
@@ -64,12 +69,22 @@ public class Main extends Application {
                 sel.selectionSort(path);
 
                 bubbleTimes.add(bub.getTime());
-                bubbleCount.add(bub.getSwaps());
-                bubbleComparisons .add(bub.getComparisons());
+                bubbleSwap.add(bub.getSwaps());
+                bubbleComparisons.add(bub.getComparisons());
                 insertionTimes.add(ins.getTime());
-                insertionCount.add(ins.getCount());
+                insertionSwap.add(ins.getSwap());
+                insertComparisons.add(ins.getComparisons());
                 selectionTimes.add(sel.getTime());
-                selectionCount.add(sel.getCount());
+                selectionSwap.add(sel.getSwap());
+                selectionComparisons.add(sel.getComparisons());
+        }
+
+        for (int i = 0; i<9; i++){
+                if (i<3){
+                    totalSwaps.set(i, bubbleSwap.get(i));
+                    totalComparisons.set(i, bubbleComparisons.get(i));
+                }
+
         }
 
         stage.setTitle("LineChart");
@@ -81,69 +96,35 @@ public class Main extends Application {
 
         lineChart.setTitle("Métodos de Ordenação");
 
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Bubble Crescente");
-        series1.getData().add(new XYChart.Data("100", bubbleTimes.get(0)));
-        series1.getData().add(new XYChart.Data("1000", bubbleTimes.get(1)));
-        series1.getData().add(new XYChart.Data("10000", bubbleTimes.get(2)));
+        String[] methodNames = {"Bubble", "Insertion", "Selection"};
+        String[] dataTypes = {"Crescente", "Decrescente", "Desordenado"};
 
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Bubble Decrescente");
-        series2.getData().add(new XYChart.Data("100", bubbleTimes.get(3)));
-        series2.getData().add(new XYChart.Data("1000", bubbleTimes.get(4)));
-        series2.getData().add(new XYChart.Data("10000", bubbleTimes.get(5)));
-
-        XYChart.Series series3 = new XYChart.Series();
-        series3.setName("Bubble Desordenado");
-        series3.getData().add(new XYChart.Data("100", bubbleTimes.get(6)));
-        series3.getData().add(new XYChart.Data("1000", bubbleTimes.get(7)));
-        series3.getData().add(new XYChart.Data("10000", bubbleTimes.get(8)));
-
-        XYChart.Series series4 = new XYChart.Series();
-        series4.setName("Insertion Crescente");
-        series4.getData().add(new XYChart.Data("100", insertionTimes.get(0)));
-        series4.getData().add(new XYChart.Data("1000", insertionTimes.get(1)));
-        series4.getData().add(new XYChart.Data("10000", insertionTimes.get(2)));
-
-        XYChart.Series series5 = new XYChart.Series();
-        series5.setName("Insertion Decrescente");
-        series5.getData().add(new XYChart.Data("100", insertionTimes.get(3)));
-        series5.getData().add(new XYChart.Data("1000", insertionTimes.get(4)));
-        series5.getData().add(new XYChart.Data("10000", insertionTimes.get(5)));
-
-        XYChart.Series series6 = new XYChart.Series();
-        series6.setName("Insertion Desordenado");
-        series6.getData().add(new XYChart.Data("100", insertionTimes.get(6)));
-        series6.getData().add(new XYChart.Data("1000", insertionTimes.get(7)));
-        series6.getData().add(new XYChart.Data("10000", insertionTimes.get(8)));
-
-
-        XYChart.Series series7 = new XYChart.Series();
-        series7.setName("Selection Crescente");
-        series7.getData().add(new XYChart.Data("100", selectionTimes.get(0)));
-        series7.getData().add(new XYChart.Data("1000", selectionTimes.get(1)));
-        series7.getData().add(new XYChart.Data("10000", selectionTimes.get(2)));
-
-        XYChart.Series series8 = new XYChart.Series();
-        series8.setName("Selection Crescente");
-        series8.getData().add(new XYChart.Data("100", selectionTimes.get(3)));
-        series8.getData().add(new XYChart.Data("1000", selectionTimes.get(4)));
-        series8.getData().add(new XYChart.Data("10000", selectionTimes.get(5)));
-
-        XYChart.Series series9 = new XYChart.Series();
-        series9.setName("Selection Crescente");
-        series9.getData().add(new XYChart.Data("100", selectionTimes.get(6)));
-        series9.getData().add(new XYChart.Data("1000", selectionTimes.get(7)));
-        series9.getData().add(new XYChart.Data("10000", selectionTimes.get(8)));
+        for (String method : methodNames) {
+            for (String dataType : dataTypes) {
+                XYChart.Series series = new XYChart.Series();
+                series.setName(method + " " + dataType);
+                for (int i = 0; i < 3; i++) {
+                    String dataSize = (i == 0) ? "100" : (i == 1) ? "1000" : "10000";
+                    long time = 0;
+                    if (method.equals("Bubble")) {
+                        int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);
+                        time = bubbleTimes.get(index);
+                    } else if (method.equals("Insertion")) {
+                        int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);
+                        time = insertionTimes.get(index);
+                    } else if (method.equals("Selection")) {
+                        int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);
+                        time = selectionTimes.get(index);
+                    }
+                    series.getData().add(new XYChart.Data(dataSize, time));
+                }
+                lineChart.getData().add(series);
+            }
+        }
 
         Scene scene = new Scene(lineChart, 800, 600);
-        lineChart.getData().addAll(series1, series2, series3, series4, series5, series6, series7, series8, series9);
-
         stage.setScene(scene);
         stage.show();
-
-        System.out.println(bubbleCount.get(6));
-        System.out.println(bubbleComparisons.get(6));
 
     }
 

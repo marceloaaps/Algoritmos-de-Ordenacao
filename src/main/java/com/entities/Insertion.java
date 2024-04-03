@@ -10,6 +10,7 @@ public class Insertion {
     private ArrayList<Integer> list = new ArrayList<>();
     private long time;
     private int swaps;
+    private int comparisons;
 
     public Insertion() {
     }
@@ -26,12 +27,20 @@ public class Insertion {
         this.time = time;
     }
 
-    public int getCount() {
+    public int getSwap() {
         return swaps;
     }
 
-    public void setCount(int swaps) {
+    public void setSwap(int swaps) {
         this.swaps = swaps;
+    }
+
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    public void setComparisons(int comparisons) {
+        this.comparisons = comparisons;
     }
 
     public void insertionSort(String path) throws IOException {
@@ -44,13 +53,17 @@ public class Insertion {
 
         time = System.currentTimeMillis();
         for (int i = 1; i < list.size(); i++) {
-
             int value = list.get(i);
             int j = i - 1;
+
             while (j >= 0 && list.get(j) > value) {
                 this.list.set(j + 1, list.get(j));
                 j = j - 1;
                 this.swaps++;
+                this.comparisons++;
+            }
+            if (j >= 0) {
+                this.comparisons++;
             }
             this.list.set(j + 1, value);
         }

@@ -10,6 +10,7 @@ public class Selection {
     private ArrayList<Integer> list = new ArrayList<>();
     private Long time;
     private int swaps;
+    private int comparisons;
 
     public Selection() {
     }
@@ -32,12 +33,20 @@ public class Selection {
         this.time = time;
     }
 
-    public int getCount() {
+    public int getSwap() {
         return swaps;
     }
 
-    public void setCount(int swaps) {
+    public void setSwap(int swaps) {
         this.swaps = swaps;
+    }
+
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    public void setComparisons(int comparisons) {
+        this.comparisons = comparisons;
     }
 
     public void selectionSort(String path) throws IOException {
@@ -57,6 +66,7 @@ public class Selection {
                     n = j;
                     this.swaps++;
                 }
+                this.comparisons++;
             }
 
             int temp = list.get(n);
