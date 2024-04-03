@@ -42,76 +42,71 @@ public class Main extends Application {
         paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado1000.txt");
         paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado10000.txt");
 
-
-        ArrayList<XYChart.Series> seriesList = new ArrayList<>();
-        ArrayList<Integer> totalBubbleComparisons = new ArrayList<>();
-        ArrayList<Integer> totalBubbleSwaps = new ArrayList<>();
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Integer> bubbleSwap = new ArrayList<>();
         ArrayList<Integer> bubbleComparisons = new ArrayList<>();
         ArrayList<Long> insertionTimes = new ArrayList<>();
         ArrayList<Integer> insertionSwap = new ArrayList<>();
-        ArrayList<Integer> insertionComparisons  = new ArrayList<>();
+        ArrayList<Integer> insertionComparisons = new ArrayList<>();
         ArrayList<Long> selectionTimes = new ArrayList<>();
         ArrayList<Integer> selectionSwap = new ArrayList<>();
         ArrayList<Integer> selectionComparisons = new ArrayList<>();
 
-
         for (String path : paths) {
-                Bubble bub = new Bubble();
-                bub.bubbleSort(path);
+            Bubble bub = new Bubble();
+            bub.bubbleSort(path);
 
-                Insertion ins = new Insertion();
-                ins.insertionSort(path);
+            Insertion ins = new Insertion();
+            ins.insertionSort(path);
 
-                Selection sel = new Selection();
-                sel.selectionSort(path);
+            Selection sel = new Selection();
+            sel.selectionSort(path);
 
-                bubbleTimes.add(bub.getTime());
-                bubbleSwap.add(bub.getSwaps());
-                bubbleComparisons.add(bub.getComparisons());
-                insertionTimes.add(ins.getTime());
-                insertionSwap.add(ins.getSwap());
-                insertionComparisons.add(ins.getComparisons());
-                selectionTimes.add(sel.getTime());
-                selectionSwap.add(sel.getSwap());
-                selectionComparisons.add(sel.getComparisons());
+            bubbleTimes.add(bub.getTime());
+            bubbleSwap.add(bub.getSwaps());
+            bubbleComparisons.add(bub.getComparisons());
+            insertionTimes.add(ins.getTime());
+            insertionSwap.add(ins.getSwap());
+            insertionComparisons.add(ins.getComparisons());
+            selectionTimes.add(sel.getTime());
+            selectionSwap.add(sel.getSwap());
+            selectionComparisons.add(sel.getComparisons());
         }
 
-        for (int i = 0; i<9; i++){
-            if (i == 0){
+        for (int i = 0; i < 9; i++) {
+            if (i == 0) {
                 System.out.println("Crescente 100");
             }
-            if (i == 1){
+            if (i == 1) {
                 System.out.println("Crescente 1000");
             }
-            if (i == 2){
+            if (i == 2) {
                 System.out.println("Crescente 10000");
             }
-            if (i == 3){
+            if (i == 3) {
                 System.out.println("Decrescente 100");
             }
-            if (i==4){
+            if (i == 4) {
                 System.out.println("Decrescente 1000");
             }
-            if (i==5){
+            if (i == 5) {
                 System.out.println("Decrescente 10000");
             }
-            if(i==6){
+            if (i == 6) {
                 System.out.println("Desordenado 100");
             }
-            if(i==7){
+            if (i == 7) {
                 System.out.println("Desordenado 1000");
             }
-            if(i==8){
+            if (i == 8) {
                 System.out.println("Desordenado 10000");
             }
-            System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i));
-            System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i));
-            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Insertion Comparacoes: " + selectionComparisons.get(i));
+            System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i) + " Tempo de Processamento (ms): " + bubbleTimes.get(i));
+            System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
+            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Selection Comparacoes: " + selectionComparisons.get(i) + "T empo de Processamento(ms): " + bubbleTimes.get(i));
+
             System.out.println();
         }
-
 
         stage.setTitle("LineChart");
         NumberAxis xAxis = new NumberAxis();
@@ -163,6 +158,4 @@ public class Main extends Application {
 
         launch(args);
     }
-
-
 }
