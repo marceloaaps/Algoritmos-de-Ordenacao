@@ -7,7 +7,4 @@ module com.example.trabalhoed2 {
     exports com.entities;
     exports com.program;
     opens com.program to javafx.fxml;
-    exports com.test;
-    opens com.test to javafx.fxml;
-
 }

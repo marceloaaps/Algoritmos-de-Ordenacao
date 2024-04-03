@@ -1,6 +1,7 @@
 package com.program;
 
 import com.entities.Bubble;
+import com.entities.FileProperties;
 import com.entities.Insertion;
 import com.entities.Selection;
 import javafx.application.Application;
@@ -17,24 +18,24 @@ import java.util.List;
 
 public class Main extends Application {
 
-//    static String path = "C:\\Users\\Marcelo\\Desktop\\Des100.txt";
-//    static String path2 = "C:\\Users\\Marcelo\\Desktop\\Des1000.txt";
-//    static String path3 = "C:\\Users\\Marcelo\\Desktop\\Des10000.txt";
+    static String path = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente100.txt";
+    static String path2 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente1000.txt";
+    static String path3 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente10000.txt";
 
     @Override
     public void start(Stage stage) throws IOException {
 
         ArrayList<String> paths = new ArrayList<>();
-        ArrayList<List> arrayBubble = new ArrayList<>();
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente100.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente10000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente100.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente10000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado100.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente100.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Crescente10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente100.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Des100.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Des1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Des10000.txt");
+
 
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Integer> bubbleSwap = new ArrayList<>();
@@ -146,10 +147,10 @@ public class Main extends Application {
     public static void main(String[] args) throws IOException {
 
 //        FileProperties fp = new FileProperties();
-//        fp.fileWriterDeo(path, 100);
-//        fp.fileWriterDeo(path2, 1000);
-//        fp.fileWriterDeo(path3, 10000);
-
-        launch(args);
+//        fp.fileWriterCresc(path, 100);
+//        fp.fileWriterCresc(path2, 1000);
+//        fp.fileWriterCresc(path3, 10000);
+///
+       launch(args);
     }
 }
