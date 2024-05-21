@@ -1,25 +1,22 @@
-package com.entities;
+package com.entities.lowQtt;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Bubble {
-
+public class Insertion {
     private ArrayList<Integer> list = new ArrayList<>();
     private long time;
     private int swaps;
     private int comparisons;
 
-    public Bubble() {
+    public Insertion() {
     }
 
-    public Bubble(ArrayList<Integer> list, long time, int swaps, int comparisons) {
-        this.list = list;
-        this.time = time;
-        this.swaps = swaps;
-        this.comparisons = comparisons;
+    public ArrayList<Integer> getList() {
+        return list;
     }
 
     public long getTime() {
@@ -30,16 +27,12 @@ public class Bubble {
         this.time = time;
     }
 
-    public ArrayList<Integer> getList() {
-        return list;
-    }
-
-    public int getSwaps() {
+    public int getSwap() {
         return swaps;
     }
 
-    public void setSwaps(int count) {
-        this.swaps = count;
+    public void setSwap(int swaps) {
+        this.swaps = swaps;
     }
 
     public int getComparisons() {
@@ -50,10 +43,8 @@ public class Bubble {
         this.comparisons = comparisons;
     }
 
-    public void bubbleSort(String path) throws IOException {
-
+    public void insertionSort(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
-
         String line;
 
         while ((line = br.readLine()) != null) {
@@ -61,24 +52,23 @@ public class Bubble {
         }
 
         time = System.currentTimeMillis();
-        for (int i = list.size() - 1; i > 0; i--) {
-            boolean swapped = false;
-            for (int j = 0; j < i; j++) {
+        for (int i = 1; i < list.size(); i++) {
+            int value = list.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && list.get(j) > value) {
+                this.list.set(j + 1, list.get(j));
+                j = j - 1;
+                this.swaps++;
                 this.comparisons++;
-                if (list.get(j) > list.get(j + 1)) {
-                    int temp = list.get(j);
-                    this.list.set(j, list.get(j + 1));
-                    this.list.set(j + 1, temp);
-                    swapped = true;
-                    this.swaps++;
-                }
             }
-            if (!swapped) {
-                break;
+            if (j >= 0) {
+                this.comparisons++;
             }
+            this.list.set(j + 1, value);
         }
+
         time = System.currentTimeMillis() - time;
         br.close();
     }
-
 }

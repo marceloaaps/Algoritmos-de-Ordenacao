@@ -1,4 +1,4 @@
-package com.entities;
+package com.entities.lowQtt;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,24 +6,30 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Insertion {
+public class Selection {
     private ArrayList<Integer> list = new ArrayList<>();
-    private long time;
+    private Long time;
     private int swaps;
     private int comparisons;
 
-    public Insertion() {
+    public Selection() {
+    }
+
+    public Selection(ArrayList<Integer> list, Long time, int swaps) {
+        this.list = list;
+        this.time = time;
+        this.swaps = swaps;
     }
 
     public ArrayList<Integer> getList() {
         return list;
     }
 
-    public long getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
@@ -43,7 +49,7 @@ public class Insertion {
         this.comparisons = comparisons;
     }
 
-    public void insertionSort(String path) throws IOException {
+    public void selectionSort(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
 
@@ -52,22 +58,21 @@ public class Insertion {
         }
 
         time = System.currentTimeMillis();
-        for (int i = 1; i < list.size(); i++) {
-            int value = list.get(i);
-            int j = i - 1;
+        for (int i = 0; i < list.size(); i++) {
+            int n = i;
 
-            while (j >= 0 && list.get(j) > value) {
-                this.list.set(j + 1, list.get(j));
-                j = j - 1;
-                this.swaps++;
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(j) < list.get(n)) {
+                    n = j;
+                    this.swaps++;
+                }
                 this.comparisons++;
             }
-            if (j >= 0) {
-                this.comparisons++;
-            }
-            this.list.set(j + 1, value);
+
+            int temp = list.get(n);
+            list.set(n, list.get(i));
+            list.set(i, temp);
         }
-
         time = System.currentTimeMillis() - time;
         br.close();
     }

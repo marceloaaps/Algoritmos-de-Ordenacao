@@ -1,8 +1,8 @@
 package com.program;
 
-import com.entities.Bubble;
-import com.entities.Insertion;
-import com.entities.Selection;
+import com.entities.lowQtt.Bubble;
+import com.entities.lowQtt.Insertion;
+import com.entities.lowQtt.Selection;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;

@@ -1,44 +1,45 @@
-package com.entities;
+package com.entities.lowQtt;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Selection {
+public class Bubble {
+
     private ArrayList<Integer> list = new ArrayList<>();
-    private Long time;
+    private long time;
     private int swaps;
     private int comparisons;
 
-    public Selection() {
+    public Bubble() {
     }
 
-    public Selection(ArrayList<Integer> list, Long time, int swaps) {
+    public Bubble(ArrayList<Integer> list, long time, int swaps, int comparisons) {
         this.list = list;
         this.time = time;
         this.swaps = swaps;
+        this.comparisons = comparisons;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
 
     public ArrayList<Integer> getList() {
         return list;
     }
 
-    public Long getTime() {
-        return time;
-    }
-
-    public void setTime(Long time) {
-        this.time = time;
-    }
-
-    public int getSwap() {
+    public int getSwaps() {
         return swaps;
     }
 
-    public void setSwap(int swaps) {
-        this.swaps = swaps;
+    public void setSwaps(int count) {
+        this.swaps = count;
     }
 
     public int getComparisons() {
@@ -49,8 +50,10 @@ public class Selection {
         this.comparisons = comparisons;
     }
 
-    public void selectionSort(String path) throws IOException {
+    public void bubbleSort(String path) throws IOException {
+
         BufferedReader br = new BufferedReader(new FileReader(path));
+
         String line;
 
         while ((line = br.readLine()) != null) {
@@ -58,22 +61,24 @@ public class Selection {
         }
 
         time = System.currentTimeMillis();
-        for (int i = 0; i < list.size(); i++) {
-            int n = i;
-
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(j) < list.get(n)) {
-                    n = j;
+        for (int i = list.size() - 1; i > 0; i--) {
+            boolean swapped = false;
+            for (int j = 0; j < i; j++) {
+                this.comparisons++;
+                if (list.get(j) > list.get(j + 1)) {
+                    int temp = list.get(j);
+                    this.list.set(j, list.get(j + 1));
+                    this.list.set(j + 1, temp);
+                    swapped = true;
                     this.swaps++;
                 }
-                this.comparisons++;
             }
-
-            int temp = list.get(n);
-            list.set(n, list.get(i));
-            list.set(i, temp);
+            if (!swapped) {
+                break;
+            }
         }
         time = System.currentTimeMillis() - time;
         br.close();
     }
+
 }
