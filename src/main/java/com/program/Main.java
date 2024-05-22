@@ -153,7 +153,7 @@ public class Main extends Application {
                 XYChart.Series series = new XYChart.Series();
                 series.setName(method + " " + dataType);
                 for (int i = 0; i < 3; i++) {
-                    String dataSize = (i == 0) ? "100" : (i == 1) ? "1000" : "10000";
+                    String dataSize = (i == 0) ? "1000" : (i == 1) ? "10000" : "100000";
                     long time = 0;
                     if (method.equals("Quick")) {
                         int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);

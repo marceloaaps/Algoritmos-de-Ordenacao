@@ -122,9 +122,10 @@ public class Quick {
             int j = i - 1;
 
             while (j >= low && array[j] > key) {
-                comparisons++;
                 array[j + 1] = array[j];
                 j = j - 1;
+                comparisons++;
+                swaps++;
             }
             array[j + 1] = key;
         }
