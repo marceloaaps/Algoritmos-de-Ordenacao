@@ -1,12 +1,9 @@
 package com.program;
 
-import com.entities.FileProperties;
-import com.entities.lowQtt.Bubble;
-import com.entities.lowQtt.Insertion;
-import com.entities.lowQtt.Selection;
 import com.entities.mediumHighQtt.Heap;
 import com.entities.mediumHighQtt.Merge;
 import com.entities.mediumHighQtt.Quick;
+import com.properties.FileProperties;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -17,7 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main extends Application {
 
@@ -205,6 +201,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws IOException {
+
+//        Tirar os comentários abaixo se for utilizar a criação de arquivos.
 
 //        FileProperties fp = new FileProperties();
 //        fp.fileWriterCresc(path, 1000);

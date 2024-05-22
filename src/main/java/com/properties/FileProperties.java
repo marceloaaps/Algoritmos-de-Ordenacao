@@ -1,4 +1,4 @@
-package com.entities;
+package com.properties;
 
 import java.io.*;
 import java.util.ArrayList;
