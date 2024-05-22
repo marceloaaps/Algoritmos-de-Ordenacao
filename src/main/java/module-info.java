@@ -3,8 +3,8 @@ module com.example.trabalhoed2 {
     requires javafx.fxml;
 
 
-    opens com.entities to javafx.fxml;
-    exports com.entities;
+
+
     exports com.program;
     opens com.program to javafx.fxml;
     exports com.test;

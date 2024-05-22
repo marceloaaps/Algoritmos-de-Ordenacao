@@ -126,9 +126,9 @@ public class Main extends Application {
                 System.out.println("Desordenado 10000");
             }
 
-            System.out.println("Quick Trocas: " + quickSwap.get(i) + " - Merge Comparacoes: " + quickComparisons.get(i) + "Tempo de processamento(ms) " + quickTimes.get(i));
-            System.out.println("Merge Trocas: " + mergeSwap.get(i) + " - Merge Comparacoes: " + mergeComparisons.get(i) + "Tempo de processamento(ms) " + mergeTimes.get(i));
-            System.out.println("Heap Trocas: " + heapSwap.get(i) + " - Heap Comparacoes: " + heapComparisons.get(i) + "Tempo de processamento(ms) " + heapTimes.get(i));
+            System.out.println("Quick Trocas: " + quickSwap.get(i) + " - Merge Comparacoes: " + quickComparisons.get(i) + " Tempo de processamento(ms) " + quickTimes.get(i));
+            System.out.println("Merge Trocas: " + mergeSwap.get(i) + " - Merge Comparacoes: " + mergeComparisons.get(i) + " Tempo de processamento(ms) " + mergeTimes.get(i));
+            System.out.println("Heap Trocas: " + heapSwap.get(i) + " - Heap Comparacoes: " + heapComparisons.get(i) + " Tempo de processamento(ms) " + heapTimes.get(i));
 //            System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i) + " Tempo de Processamento (ms): " + bubbleTimes.get(i));
 //            System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
 //            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Selection Comparacoes: " + selectionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
