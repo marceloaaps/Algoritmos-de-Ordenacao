@@ -58,15 +58,12 @@ public class Quick {
         quickSort(array, 0, array.length - 1);
         long endTime = System.currentTimeMillis();
 
-        // Update time taken to sort
         this.time = endTime - startTime;
 
-        // Convert the sorted array back to a list
         list = new ArrayList<>(List.of(array));
     }
 
     private void quickSort(Integer[] array, int low, int high) {
-        // Preventing StackOverflowError by limiting recursion depth
         while (low < high) {
             if (high - low < 16) {
                 insertionSort(array, low, high);
@@ -74,7 +71,6 @@ public class Quick {
             } else {
                 int pi = partition(array, low, high);
 
-                // Optimized recursive calls to avoid stack overflow
                 if (pi - low < high - pi) {
                     quickSort(array, low, pi - 1);
                     low = pi + 1;

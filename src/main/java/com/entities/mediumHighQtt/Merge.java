@@ -100,7 +100,7 @@ public class Merge {
                 array[k] = rightArray[j];
                 j++;
             }
-            swaps++; // Consider a write operation as a swap
+            swaps++;
             k++;
         }
 
@@ -108,14 +108,14 @@ public class Merge {
             array[k] = leftArray[i];
             i++;
             k++;
-            swaps++; // Consider a write operation as a swap
+            swaps++;
         }
 
         while (j < n2) {
             array[k] = rightArray[j];
             j++;
             k++;
-            swaps++; // Consider a write operation as a swap
+            swaps++;
         }
     }
 }

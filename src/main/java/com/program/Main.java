@@ -3,6 +3,7 @@ package com.program;
 import com.entities.mediumHighQtt.Heap;
 import com.entities.mediumHighQtt.Merge;
 import com.entities.mediumHighQtt.Quick;
+import com.entities.mediumHighQtt.Shell;
 import com.properties.FileProperties;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -13,27 +14,29 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Main extends Application {
 
-//    static String path = "C:\\Users\\Marcelo\\Desktop\\Desordenado1000.txt";
-//    static String path2 = "C:\\Users\\Marcelo\\Desktop\\Desordenado10000.txt";
-//    static String path3 = "C:\\Users\\Marcelo\\Desktop\\Desordenado100000.txt";
+//    static String path = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente1000.txt";
+//    static String path2 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente10000.txt";
+//    static String path3 = "C:\\Users\\marce\\OneDrive\\Área de Trabalho\\Decrescente100000.txt";
+
 
     @Override
     public void start(Stage stage) throws IOException {
 
         ArrayList<String> paths = new ArrayList<>();
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente10000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Crescente100000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente10000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Decrescente100000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado1000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado10000.txt");
-        paths.add("C:\\Users\\Marcelo\\Desktop\\Desordenado100000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Crescente1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Crescente10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Crescente100000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Decrescente1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Decrescente10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Decrescente100000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Desordenado1000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Desordenado10000.txt");
+        paths.add("C:\\Users\\marce\\OneDrive\\Área de Trabalho\\AulasFaculdade\\Desordenado100000.txt");
 
         ArrayList<Long> bubbleTimes = new ArrayList<>();
         ArrayList<Integer> bubbleSwap = new ArrayList<>();
@@ -54,6 +57,10 @@ public class Main extends Application {
         ArrayList<Long> heapTimes = new ArrayList<>();
         ArrayList<Integer> heapSwap = new ArrayList<>();
         ArrayList<Integer> heapComparisons = new ArrayList<>();
+        ArrayList<Long> shellTimes = new ArrayList<>();
+        ArrayList<Integer> shellSwap = new ArrayList<>();
+        ArrayList<Integer> shellComparisons = new ArrayList<>();
+
 
 //        for (String path : paths) {
 //            Bubble bub = new Bubble();
@@ -95,6 +102,11 @@ public class Main extends Application {
             heapComparisons.add(heap.getComparisons());
             heapSwap.add(heap.getSwaps());
 
+            Shell shell = new Shell();
+            shell.shellSort(path);
+            shellTimes.add(shell.getTime());
+            shellComparisons.add(shell.getComparisons());
+            shellSwap.add(shell.getSwaps());
         }
 
         for (int i = 0; i < 9; i++) {
@@ -129,6 +141,7 @@ public class Main extends Application {
             System.out.println("Quick Trocas: " + quickSwap.get(i) + " - Merge Comparacoes: " + quickComparisons.get(i) + " Tempo de processamento(ms) " + quickTimes.get(i));
             System.out.println("Merge Trocas: " + mergeSwap.get(i) + " - Merge Comparacoes: " + mergeComparisons.get(i) + " Tempo de processamento(ms) " + mergeTimes.get(i));
             System.out.println("Heap Trocas: " + heapSwap.get(i) + " - Heap Comparacoes: " + heapComparisons.get(i) + " Tempo de processamento(ms) " + heapTimes.get(i));
+            System.out.println("Shell Trocas: " + shellSwap.get(i) + " - Shell Comparacoes: " + shellComparisons.get(i) + " Tempo de processamento(ms) " + shellTimes.get(i));
 //            System.out.println("Bubble Trocas: " + bubbleSwap.get(i) + " - Bubble Comparacoes: " + bubbleComparisons.get(i) + " Tempo de Processamento (ms): " + bubbleTimes.get(i));
 //            System.out.println("Insertion Trocas: " + insertionSwap.get(i) + " - Insertion Comparacoes: " + insertionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
 //            System.out.println("Selection Trocas: " + selectionSwap.get(i) + " - Selection Comparacoes: " + selectionComparisons.get(i) + " Tempo de Processamento(ms): " + bubbleTimes.get(i));
@@ -145,7 +158,7 @@ public class Main extends Application {
 
         lineChart.setTitle("Métodos de Ordenação");
 
-        String[] methodNames = {"Quick", "Merge", "Heap"};
+        String[] methodNames = {"Quick", "Merge", "Heap", "Shell"};
         String[] dataTypes = {"Crescente", "Decrescente", "Desordenado"};
 
         for (String method : methodNames) {
@@ -164,6 +177,9 @@ public class Main extends Application {
                     } else if (method.equals("Heap")) {
                         int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);
                         time = heapTimes.get(index);
+                    }else if (method.equals("Shell")){
+                        int index = (dataType.equals("Crescente")) ? i : ((dataType.equals("Decrescente")) ? i + 3 : i + 6);
+                        time = shellTimes.get(index);
                     }
                     series.getData().add(new XYChart.Data(dataSize, time));
                 }

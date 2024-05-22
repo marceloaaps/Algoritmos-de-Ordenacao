@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Heap {
+public class Shell {
 
     private List<Integer> list = new ArrayList<>();
     private long time;
     private int swaps;
     private int comparisons;
 
-    public Heap() {}
+    public Shell() {}
 
     public List<Integer> getList() {
         return list;
@@ -43,7 +43,7 @@ public class Heap {
         this.comparisons = comparisons;
     }
 
-    public void heapSort(String path) throws IOException {
+    public void shellSort(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
 
@@ -55,7 +55,7 @@ public class Heap {
         Integer[] array = list.toArray(new Integer[0]);
 
         long startTime = System.currentTimeMillis();
-        heapSort(array);
+        shellSort(array);
         long endTime = System.currentTimeMillis();
 
         this.time = endTime - startTime;
@@ -63,46 +63,24 @@ public class Heap {
         list = new ArrayList<>(List.of(array));
     }
 
-    private void heapSort(Integer[] array) {
+    private void shellSort(Integer[] array) {
         int n = array.length;
 
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(array, n, i);
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int temp = array[i];
+                int j;
+                for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
+                    comparisons++;
+                    array[j] = array[j - gap];
+                    swaps++;
+                }
+                comparisons++;
+                array[j] = temp;
+                if (i != j) {
+                    swaps++;
+                }
+            }
         }
-
-        for (int i = n - 1; i > 0; i--) {
-            swap(array, 0, i);
-
-            heapify(array, i, 0);
-        }
-    }
-
-    private void heapify(Integer[] array, int n, int i) {
-        int largest = i;
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-
-        comparisons++;
-        if (left < n && array[left] > array[largest]) {
-            largest = left;
-        }
-
-        comparisons++;
-        if (right < n && array[right] > array[largest]) {
-            largest = right;
-        }
-
-        if (largest != i) {
-            swap(array, i, largest);
-
-            heapify(array, n, largest);
-        }
-    }
-
-    private void swap(Integer[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-        swaps++;
     }
 }
