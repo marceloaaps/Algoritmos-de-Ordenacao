@@ -12,7 +12,6 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -138,7 +137,7 @@ public class Main extends Application {
                 System.out.println("Desordenado 10000");
             }
 
-            System.out.println("Quick Trocas: " + quickSwap.get(i) + " - Merge Comparacoes: " + quickComparisons.get(i) + " Tempo de processamento(ms) " + quickTimes.get(i));
+            System.out.println("Quick Trocas: " + quickSwap.get(i) + " - Quick Comparacoes: " + quickComparisons.get(i) + " Tempo de processamento(ms) " + quickTimes.get(i));
             System.out.println("Merge Trocas: " + mergeSwap.get(i) + " - Merge Comparacoes: " + mergeComparisons.get(i) + " Tempo de processamento(ms) " + mergeTimes.get(i));
             System.out.println("Heap Trocas: " + heapSwap.get(i) + " - Heap Comparacoes: " + heapComparisons.get(i) + " Tempo de processamento(ms) " + heapTimes.get(i));
             System.out.println("Shell Trocas: " + shellSwap.get(i) + " - Shell Comparacoes: " + shellComparisons.get(i) + " Tempo de processamento(ms) " + shellTimes.get(i));
