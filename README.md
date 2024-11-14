@@ -1,6 +1,7 @@
 
 # <img width="25px" src="https://i.pinimg.com/originals/5d/ea/eb/5deaeb33a97005e24ce8ff7f8bcaf420.gif" />Algoritmos de Ordenação <img width="25px" src="https://i.pinimg.com/originals/5d/ea/eb/5deaeb33a97005e24ce8ff7f8bcaf420.gif" />
-Projeto feito 100% por mim, para aprendizado e visualização de performance com diversos algoritmos de ordenação em Java com utilização de gráfico.
+Projeto feito 100% por mim, para aprendizado e visualização de performance com diversos algoritmos de ordenação em Java com utilização de gráfico. 
+Esse projeto foi feito com base na utilização de arquivos .txt para leitura e ordenação dos dados em memória, onde está pronto para ser adaptado para outros tipos de recebimento de arquivo.
 ## Métodos de Ordenação <img width="20px" src="https://cdn-icons-png.flaticon.com/512/404/404621.png" />
 - Baixa Quantidade
     - Bubble Sort
